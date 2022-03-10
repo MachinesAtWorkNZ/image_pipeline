@@ -771,9 +771,10 @@ class MonoCalibrator(Calibrator):
 
         elif self.camera_model == CAMERA_MODEL.PINHOLE:
             print("mono pinhole calibration...")
-            reproj_err, self.intrinsics, dist_coeffs, rvecs, tvecs = cv2.calibrateCamera(
+            reproj_err, self.intrinsics, dist_coeffs, rvecs, tvecs, newObjPoints = cv2.calibrateCameraRO(
                        opts, ipts,
                        self.size,
+                       7,
                        intrinsics_in,
                        None,
                        flags = self.calib_flags)
